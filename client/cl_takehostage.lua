@@ -90,10 +90,10 @@ end
 function callTakeHostage()
 	ClearPedSecondaryTask(PlayerPedId())
 	DetachEntity(PlayerPedId(), true, false)
-
+	
 	local canTakeHostage = false
 	for i=1, #takeHostage.allowedWeapons do
-		if HasPedGotWeapon(PlayerPedId(), takeHostage.allowedWeapons[i], false) then
+		if exports.ox_inventory:Search('slots', takeHostage.allowedWeapons[i]) then
 			if GetAmmoInPedWeapon(PlayerPedId(), takeHostage.allowedWeapons[i]) > 0 then
 				canTakeHostage = true 
 				foundWeapon = takeHostage.allowedWeapons[i]
